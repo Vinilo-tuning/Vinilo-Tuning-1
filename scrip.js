@@ -179,10 +179,6 @@ sendToWhatsApp.addEventListener('click', () => {
         return;
     }
 
-    const discount = 0.20; // 20% de descuento
-    const discountedTotal = total * (1 - discount); // Calcula el total con descuento
-
-    message += `Total a pagar (con 20% de descuento aplicado): S/.${discountedTotal.toFixed(2)}`;
 
     const whatsappURL = `https://api.whatsapp.com/send?phone=51955157003&text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
