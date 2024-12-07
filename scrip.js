@@ -139,16 +139,16 @@ rowProduct.addEventListener('click', e => {
         const title = e.target.dataset.title;
         const color = e.target.dataset.color;
         allProducts = allProducts.map(product => {
-            if (product.title === title && product.color === color) {
+            if (product.title === title) {
                 product.quantity++;
             }
             return product;
         });
     } else if (e.target.classList.contains('btn-decrease')) {
         const title = e.target.dataset.title;
-        const color = e.target.dataset.color;
+        
         allProducts = allProducts.map(product => {
-            if (product.title === title && product.color === color && product.quantity > 1) {
+            if (product.title === title && product.quantity > 1) {
                 product.quantity--;
             }
             return product;
@@ -179,6 +179,10 @@ sendToWhatsApp.addEventListener('click', () => {
         return;
     }
 
+    const discount = 0; //
+    const discountedTotal = total * (1 - discount); // Calcula el total con descuento
+
+    message += `Total a pagar: S/.${discountedTotal.toFixed(2)}`;
 
     const whatsappURL = `https://api.whatsapp.com/send?phone=51955157003&text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
